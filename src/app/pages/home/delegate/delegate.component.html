@@ -1,0 +1,114 @@
+<title>{{title}}</title>
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="col-lg-6 col-md-6">
+      <mat-card>
+        <div class="card">
+          <div class="card-header" data-background-color="orange">
+
+            <h4 class="title">Register Delegate</h4>
+
+            <p class="category"></p>
+
+          </div>
+          <div class="card-content">
+            <mat-card-content>
+              <form name="form" #f="ngForm" (ngSubmit)="onSubmit()" class="example-form">
+                <div class="col-sm-12">
+                  <div class="wizard-card">
+                    <div class="picture-container">
+                      <div class="picture">
+                        <img src="assets/img/default-avatar.png" class="picture-src" id="" title="">
+                        <input type="file" name="photo" [(ngModel)]="model.photo" #photo="ngModel" id="wizard-picture">
+                      </div>
+                      <h6>Choose Picture</h6>
+                    </div>
+                  </div>
+
+                </div>
+                <mat-form-field class="example-full-width">
+                  <input name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel" matInput placeholder="First Name">
+
+                  <!-- <mat-error *ngIf="!firstName.valid">
+                                          firstName is <strong>required</strong>
+                                          </mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input name="middelname" [(ngModel)]="model.middlename" #middlename="ngModel" matInput placeholder="Middle Name">
+
+                  <!-- <mat-error *ngIf="!middleName.valid">
+                                                  MiddleName is <strong>required</strong>
+                                                </mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel" matInput placeholder="Last Name">
+
+                  <!-- <mat-error *ngIf="!lastName.valid">
+                                                      LastName is <strong>required</strong>
+                                                    </mat-error> -->
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input name="date_of_birth" matInput [(ngModel)]="model.date_of_birth" #date_of_birth="ngModel" [matDatepicker]="picker"
+                    placeholder="Date of Birth">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input name="helper_relationship" [(ngModel)]="model.helper_relationship" #helper_relationshipe="ngModel" matInput placeholder="Helper Relationship">
+                  
+                   <mat-hint>please describe your Relationship with the delegate</mat-hint>
+                  </mat-form-field>
+                <button mat-raised-button color="primary">Add</button>
+                <button (click)="deleted(model)" [disabled]="isDisabled" mat-raised-button color="primary">Update</button>
+                <button (click)="clear()" [disabled]="isDisabled" mat-raised-button color="primary">Clear</button>
+
+              </form>
+            </mat-card-content>
+
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div class="card">
+        <div class="card-header" data-background-color="orange">
+          <h4 class="title">Registered Delegates</h4>
+
+
+
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-warning">
+              <tr>
+                <th>ID</th>
+                <th>Delegates Name</th>
+                <th>Operations</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr (click)="getDelegate(delegate._id)" *ngFor="let delegate of delegates">
+                <td>{{delegate._id}}</td>
+                <td>{{delegate.lastname}} {{delegate.middlename}} {{delegate.firstname}}</td>
+                <td>
+                  <button (click)="deleted(delegate)" class="btn btn-sm btn-primary btn-fab btn-fab-mini btn-round">
+                    <i class="material-icons">delete</i>
+                  </button>
+                 
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

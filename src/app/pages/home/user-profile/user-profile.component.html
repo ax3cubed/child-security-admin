@@ -1,0 +1,266 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Edit Profile</h4>
+                        <p class="category">Complete your profile</p>
+                    </div>
+                    <div class="card-content">
+                        <form name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+                            <div class="row">
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !email.valid,'has-success': email.valid }">
+                                       
+                                        <input [disabled]="true"  type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+                                        <span *ngIf="!email.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="email.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <mat-form-field style="width: 60px">
+                                                    <mat-select [disabled]="true" name="designation" [disabled]="true" placeholder="Title" [(ngModel)]="model.designation" #designation="ngModel"  >
+                                                        <mat-option  *ngFor="let designation of designations" [value]="designation.value">{{designation.value}}</mat-option>
+                                                    </mat-select>
+    
+                                                    <mat-hint align="end">select Title </mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !firstName.valid,'has-success': firstName.valid }">
+                                       
+                                        <input [disabled]="true" type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+                                        <span *ngIf="!firstName.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="firstName.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                        <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !middleName.valid,'has-success': middleName.valid }">
+                                                <input  [disabled]="true" type="text" class="form-control" name="middleName" [(ngModel)]="model.middleName" #middleName="ngModel" required>
+                                                <span *ngIf="!middleName.valid" class="material-icons form-control-feedback">clear</span>
+                                                <span *ngIf="middleName.valid" class="form-control-feedback">
+                                                    <i class="material-icons">done</i>
+                                                </span>
+                                            </div>
+                                </div>
+                                <div class="col-md-3">
+                                        <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !lastName.valid,'has-success': lastName.valid }">
+                                                <input [disabled]="true" type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+                                                <span *ngIf="!lastName.valid" class="material-icons form-control-feedback">clear</span>
+                                                <span *ngIf="lastName.valid" class="form-control-feedback">
+                                                    <i class="material-icons">done</i>
+                                                </span>
+                                            </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !homeAddress.valid,'has-success': homeAddress.valid }">
+                                        <textarea [disabled]="true" class="form-control" matInput name="homeAddress" [(ngModel)]="model.homeAddress" #homeAddress="ngModel" maxlength="300"
+                                         required></textarea>
+                                        <span *ngIf="!homeAddress.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="homeAddress.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                    <mat-hint align="end">{{homeAddress.value?.length || 0}}/300</mat-hint>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <mat-form-field>
+                                            <input [disabled]="true" name="date_of_birth" [(ngModel)]="model.date_of_birth" #date_of_birth matInput [matDatepicker]="picker" placeholder="Date of Birth">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !phoneNumber.valid,'has-success': phoneNumber.valid }">
+                                        <mat-form-field style="width: 200px">
+                                            <span matPrefix>+234 &nbsp;</span>
+                                            <input [disabled]="true" matInput type="text" placeholder="Telephone" name="phoneNumber" [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel"
+                                             required>
+                                            <span *ngIf="!phoneNumber.valid" class="material-icons form-control-feedback">clear</span>
+                                            <span *ngIf="phoneNumber.valid" class="form-control-feedback">
+                                                <i class="material-icons">done</i>
+                                            </span>
+                                            <mat-icon matSuffix>mode_edit</mat-icon>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !nationality.valid,'has-success': nationality.valid }">
+                                        <input [disabled]="true" type="text" class="form-control" name="nationality" [(ngModel)]="model.nationality" #nationality="ngModel" required>
+                                        <span *ngIf="!nationality.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="nationality.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !state.valid,'has-success': state.valid }">
+                                        <input [disabled]="true" type="text" class="form-control" name="state" [(ngModel)]="model.state" #state="ngModel" required>
+                                        <span *ngIf="!state.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="state.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !localGovernment.valid,'has-success': localGovernment.valid }">
+                                        <input [disabled]="true" type="text" class="form-control" name="localGovernment" [(ngModel)]="model.localGovernment" #localGovernment="ngModel"
+                                         required>
+                                        <span *ngIf="!localGovernment.valid" class="material-icons form-control-feedback">clear</span>
+                                        <span *ngIf="localGovernment.valid" class="form-control-feedback">
+                                            <i class="material-icons">done</i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                        <div class="form-group">
+                                                <mat-form-field>
+                                                    <mat-select [disabled]="true" name="securityQuestion1" placeholder="Security Question 1" [(ngModel)]="model.securityQuestion1" #securityQuestion1="ngModel">
+                                                        <mat-option *ngFor="let securityQuestion of securityQuestions" [value]="securityQuestion.value">{{securityQuestion.viewValue}}</mat-option>
+                                                    </mat-select>
+    
+                                                    <mat-hint align="end">select first security question </mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                        <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !securityAnswer1.valid,'has-success': securityAnswer1.valid }">
+                                                <input [disabled]="true" type="text" class="form-control" name="securityAnswer1" [(ngModel)]="model.securityAnswer1" #securityAnswer1="ngModel"
+                                                 required>
+                                                <span *ngIf="!securityAnswer1.valid" class="material-icons form-control-feedback">clear</span>
+                                                <span *ngIf="securityAnswer1.valid" class="form-control-feedback">
+                                                    <i class="material-icons">done</i>
+                                                </span>
+                                            </div>
+                                </div>
+                                <div class="col-sm-4">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select [disabled]="true" name="securityQuestion2" [(ngModel)]="model.securityQuestion2" #securityQuestion2="ngModel" placeholder="Security Question 2">
+													<mat-option *ngFor="let securityQuestion of securityQuestions" [value]="securityQuestion.value">{{securityQuestion.viewValue}}</mat-option>
+												</mat-select>
+
+												<mat-hint align="end">select second security question </mat-hint>
+											</mat-form-field>
+										</div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                            <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !securityAnswer2.valid,'has-success': securityAnswer2.valid }">
+                                                <input [disabled]="true" type="text" class="form-control" name="securityAnswer2" [(ngModel)]="model.securityAnswer2" #securityAnswer2="ngModel"
+                                                 required>
+                                                <span *ngIf="!securityAnswer2.valid" class="material-icons form-control-feedback">clear</span>
+                                                <span *ngIf="securityAnswer2.valid" class="form-control-feedback">
+                                                    <i class="material-icons">done</i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                        <div class="form-group">
+                                                <mat-form-field style="width: 150px">
+                                                    <mat-select [disabled]="true" placeholder="Relationship" name="relationship" [(ngModel)]="model.relationship" #relationship="ngModel">
+                                                        <mat-option [value]="relationship.value" *ngFor="let relationship of relationships">{{relationship.viewValue}}</mat-option>
+                                                    </mat-select>
+    
+                                                    <mat-hint align="end"> how are you related to the child</mat-hint>
+                                                </mat-form-field>
+                                            </div>
+                                </div>
+                                <div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field style="width: 150px">
+												<mat-select [disabled]="true" name="maritalStatus" placeholder="Marital Status" [(ngModel)]="model.maritalStatus" #maritalStatus="ngModel">
+													<mat-option *ngFor="let maritalStatus of maritalStatuses" [value]="maritalStatus.value">{{maritalStatus.value}}</mat-option>
+												</mat-select>
+												<mat-hint align="end">Please indicate your marital status info</mat-hint>
+											</mat-form-field>
+										</div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                            <div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !password.valid,'has-success': password.valid }">
+                                                <mat-form-field style="width: 150px">
+                                                    <input  matInput type="password"  name="password" [(ngModel)]="model.password" #password="ngModel">
+                                                    <span *ngIf="!password.valid" class="material-icons form-control-feedback">clear</span>
+                                                    <span *ngIf="password.valid" class="form-control-feedback">
+                                                        <i class="material-icons">done</i>
+                                                    </span>
+                                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                                <div class="form-group label-floating" [ngClass]="{ 'has-error':  password.value != confirmPassword.value ,'has-success': password.value == confirmPassword.value }">
+                                                    <mat-form-field style="width: 150px">
+                                                        <input matInput type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="password.confirmPassword"
+                                                         #confirmPassword="ngModel">
+                                                        <span *ngIf="password.value != confirmPassword.value" class="material-icons form-control-feedback">clear</span>
+                                                        <span *ngIf="password.value == confirmPassword.value" class="form-control-feedback">
+                                                            <i class="material-icons">done</i>
+                                                        </span>
+                                                        <mat-icon matSuffix>mode_edit</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                            </div>
+
+                            <button type="submit" (click)="update()" class="btn btn-danger pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                        <jaspero-confirmations [defaultSettings]="options"></jaspero-confirmations>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img" src="../assets/img/faces/marc.jpg" />
+                        </a>
+                    </div>
+
+                    <div class="content">
+                        <h6 class="category text-gray">{{model.designation}}</h6>
+                        <h4 class="card-title">{{model.firstName}} {{model.middleName}} {{currentParent.lastName}}</h4>
+                        <p class="card-content">
+                            {{model.homeAddress}}
+                        </p>
+                        <a class="btn btn-danger btn-round">{{model.email}}</a>
+                        
+                        <div class="card card-content">
+                              <ngx-qrcode  qrc-errorCorrectionLevel="H" qrc-value="{{model._id}}-(SURNAME:{{model.lastName}})" qrc-version="10" qrc-element-type="canvas"></ngx-qrcode>
+
+                        </div>
+                        <!-- <ngx-qrcode qrc-element-type="url" qrc-value="value" qrc-version="40"></ngx-qrcode> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

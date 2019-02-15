@@ -1,0 +1,53 @@
+<title>{{title}}</title>
+<div class="section section-full-screen section-signup" style="background-image: url('assets/img/city.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="card card-signup">
+          <form class="form"  name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate >
+            <div class="header header-primary text-center">
+              <h4>Sign Up</h4>
+            
+            </div>
+            <p class="text-divider">Or Be Classical</p>
+            <div class="content">
+
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">email</i>
+                </span>
+                <div class="form-group is-empty">
+                  <input name="email" [(ngModel)]="model.email" #email="ngModel" type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="material-icons">lock_outline</i>
+                </span>
+                <div class="form-group is-empty">
+                  <input name="password" [(ngModel)]="model.password" #password="ngModel" type="password" placeholder="Password..." class="form-control"><span class="material-input"></span></div>
+              </div>
+
+              <!-- If you want to add a checkbox to this form, uncomment this code
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="optionsCheckboxes" checked>
+                  Subscribe to newsletter
+                </label>
+              </div> -->
+            </div>
+            <div class="footer text-center">
+              <button  class="btn btn-simple btn-primary btn-lg">Get Started
+                <i *ngIf="loading" class="material-icons ld ld-vortex-in">adjust</i>
+                
+              </button>
+              <a [routerLink]="['/signup']" class="btn btn-link">Cancel</a>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

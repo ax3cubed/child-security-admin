@@ -1,0 +1,339 @@
+﻿<title>{{title}}</title>
+<body class="index-page">
+	<!-- Navbar -->
+	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- <a [routerLink]="['/signup#']">
+	        	<div class="logo-container">
+						<div class="logo">
+								<img src="assets/img/logo.png" alt="Child Security Express" rel="tooltip" title="<b>Child Security Express</b> was Designed & Coded with care by  <b>Abraham Junior</b>" data-placement="bottom" data-html="true">
+							</div>
+	               <div class="brand">
+	                    Child Security Express
+					</div>
+				</div>
+	      	</a> -->
+			</div>
+
+			<div class="collapse navbar-collapse" id="navigation-index">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a [routerLink]="['/login']" target="_blank">
+							<i class="material-icons">launch</i> login
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End Navbar -->
+
+	<div class="wrapper">
+		<div class="header header-filter" style="background-image: url('assets/img/bg2.jpeg');">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="brand">
+							<h1>Sign Up.</h1>
+							<h3>fill in the necessary fields. to create a Guardian account</h3>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="main main-raised">
+			<div class="wizard-card">
+				<div class="section section-basic">
+					<div class="container">
+						<div class="title">
+							<h2>Parents Details</h2>
+						</div>
+						<form name="form" (ngSubmit)="f.form.valid && upload() " #f="ngForm" novalidate>
+							<div id="inputs">
+								<div class="title">
+									<h3>Inputs</h3>
+								</div>
+
+								<div class="col-sm-12">
+									<div class="picture-container">
+										<div class="picture">
+											<img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="">
+											<input type="file" name="photo"  #photo id="wizard-picture">
+										</div>
+										<h6>Choose Picture</h6>
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select name="designation" placeholder="Title" [(ngModel)]="model.designation" #designation="ngModel">
+													<mat-option *ngFor="let designation of designations" [value]="designation.value">{{designation.value}}</mat-option>
+												</mat-select>
+
+												<mat-hint align="end">select Title </mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !firstName.valid,'has-success': firstName.valid }">
+											<label for="firstName" class="control-label">First Name</label>
+											<input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+											<span *ngIf="!firstName.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="firstName.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !middleName.valid,'has-success': middleName.valid }">
+											<label for="middleName" class="control-label">Middle Name</label>
+											<input type="text" class="form-control" name="middleName" [(ngModel)]="model.middleName" #middleName="ngModel" required>
+											<span *ngIf="!middleName.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="middleName.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !lastName.valid,'has-success': lastName.valid }">
+											<label for="lastName" class="control-label">Last Name</label>
+											<input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+											<span *ngIf="!lastName.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="lastName.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !email.valid,'has-success': email.valid }">
+											<label for="email" class="control-label">E-mail</label>
+											<input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+											<span *ngIf="!email.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="email.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !homeAddress.valid,'has-success': homeAddress.valid }">
+											<label for="homeAddress" class="control-label">Home Address</label>
+											<textarea class="form-control" matInput name="homeAddress" [(ngModel)]="model.homeAddress" #homeAddress="ngModel" maxlength="300"
+											 required></textarea>
+											<span *ngIf="!homeAddress.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="homeAddress.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+										<mat-hint align="end">{{homeAddress.value?.length || 0}}/300</mat-hint>
+									</div>
+
+									<div class="col-sm-3">
+
+										<div class="form-group">
+											<mat-form-field>
+												<input name="date_of_birth" [(ngModel)]="model.date_of_birth" #date_of_birth matInput [matDatepicker]="picker" placeholder="Date of Birth">
+												<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+												<mat-datepicker #picker></mat-datepicker>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !phoneNumber.valid,'has-success': phoneNumber.valid }">
+											<mat-form-field>
+												<span matPrefix>+234 &nbsp;</span>
+												<input matInput type="text" placeholder="Telephone" name="phoneNumber" [(ngModel)]="model.phoneNumber" #phoneNumber="ngModel"
+												 required>
+												<span *ngIf="!phoneNumber.valid" class="material-icons form-control-feedback">clear</span>
+												<span *ngIf="phoneNumber.valid" class="form-control-feedback">
+													<i class="material-icons">done</i>
+												</span>
+												<mat-icon matSuffix>mode_edit</mat-icon>
+											</mat-form-field>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !nationality.valid,'has-success': nationality.valid }">
+											<label for="nationality" class="control-label">Nationality</label>
+											<input type="text" class="form-control" name="nationality" [(ngModel)]="model.nationality" #nationality="ngModel" required>
+											<span *ngIf="!nationality.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="nationality.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !state.valid,'has-success': state.valid }">
+											<label for="state" class="control-label">State</label>
+											<input type="text" class="form-control" name="state" [(ngModel)]="model.state" #state="ngModel" required>
+											<span *ngIf="!state.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="state.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !localGovernment.valid,'has-success': localGovernment.valid }">
+											<label for="state" class="control-label">Local Govenment</label>
+											<input type="text" class="form-control" name="localGovernment" [(ngModel)]="model.localGovernment" #localGovernment="ngModel"
+											 required>
+											<span *ngIf="!localGovernment.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="localGovernment.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select name="securityQuestion1" placeholder="Security Question 1" [(ngModel)]="model.securityQuestion1" #securityQuestion1="ngModel">
+													<mat-option *ngFor="let securityQuestion of securityQuestions" [value]="securityQuestion.value">{{securityQuestion.viewValue}}</mat-option>
+												</mat-select>
+
+												<mat-hint align="end">select first security question </mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !securityAnswer1.valid,'has-success': securityAnswer1.valid }">
+											<label for="securityAnswer1" class="control-label">Security Answer 1</label>
+											<input type="text" class="form-control" name="securityAnswer1" [(ngModel)]="model.securityAnswer1" #securityAnswer1="ngModel"
+											 required>
+											<span *ngIf="!securityAnswer1.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="securityAnswer1.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select name="securityQuestion2" [(ngModel)]="model.securityQuestion2" #securityQuestion2="ngModel" placeholder="Security Question 2">
+													<mat-option *ngFor="let securityQuestion of securityQuestions" [value]="securityQuestion.value">{{securityQuestion.viewValue}}</mat-option>
+												</mat-select>
+
+												<mat-hint align="end">select second security question </mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !securityAnswer2.valid,'has-success': securityAnswer2.valid }">
+											<label for="securityAnswer2" class="control-label">Security Answer 2</label>
+											<input type="text" class="form-control" name="securityAnswer2" [(ngModel)]="model.securityAnswer2" #securityAnswer2="ngModel"
+											 required>
+											<span *ngIf="!securityAnswer2.valid" class="material-icons form-control-feedback">clear</span>
+											<span *ngIf="securityAnswer2.valid" class="form-control-feedback">
+												<i class="material-icons">done</i>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select placeholder="Relationship" name="relationship" [(ngModel)]="model.relationship" #relationship="ngModel">
+													<mat-option [value]="relationship.value" *ngFor="let relationship of relationships">{{relationship.viewValue}}</mat-option>
+												</mat-select>
+
+												<mat-hint align="end"> how are you related to the child</mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group">
+											<mat-form-field>
+												<mat-select name="maritalStatus" placeholder="Marital Status" [(ngModel)]="model.maritalStatus" #maritalStatus="ngModel">
+													<mat-option *ngFor="let maritalStatus of maritalStatuses" [value]="maritalStatus.value">{{maritalStatus.value}}</mat-option>
+												</mat-select>
+												<mat-hint align="end">Please indicate your marital status info</mat-hint>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error': f.submitted && !password.valid,'has-success': password.valid }">
+											<mat-form-field>
+												<input matInput type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+												<span *ngIf="!password.valid" class="material-icons form-control-feedback">clear</span>
+												<span *ngIf="password.valid" class="form-control-feedback">
+													<i class="material-icons">done</i>
+												</span>
+												<mat-icon matSuffix>mode_edit</mat-icon>
+											</mat-form-field>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group label-floating" [ngClass]="{ 'has-error':  password.value != confirmPassword.value ,'has-success': password.value == confirmPassword.value }">
+											<mat-form-field>
+												<input matInput type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="password.confirmPassword"
+												 #confirmPassword="ngModel" required>
+												<span *ngIf="password.value != confirmPassword.value" class="material-icons form-control-feedback">clear</span>
+												<span *ngIf="password.value == confirmPassword.value" class="form-control-feedback">
+													<i class="material-icons">done</i>
+												</span>
+												<mat-icon matSuffix>mode_edit</mat-icon>
+											</mat-form-field>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+
+							<button class="btn btn-success btn-sm btn-raised " (click)="open()">Submit
+								<i *ngIf="loading" class="material-icons ld ld-vortex-in">adjust</i>
+							</button>
+							<a [routerLink]="['/login']" class="btn btn-primary btn-sm btn-raised">Cancel</a>
+
+							<jaspero-confirmations [defaultSettings]="options"></jaspero-confirmations>
+						</form>
+
+
+
+					</div>
+				</div>
+				<div class="space-50"></div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<nav class="pull-left">
+					<ul>
+						<li>
+							<a [routerLink]="['/login']">
+								Login
+							</a>
+						</li>
+						<li>
+							<a [routerLink]="['/signup']">
+								About Us
+							</a>
+						</li>
+
+
+					</ul>
+				</nav>
+				<div class="copyright pull-right">
+					&copy; 2017, made with
+					<i class="material-icons">favorite</i> by abraham junior .
+				</div>
+			</div>
+		</footer>
+	</div>

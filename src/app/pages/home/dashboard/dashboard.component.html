@@ -1,0 +1,87 @@
+<title>{{title}}</title>
+<div class="main-content">
+    <div [hidden]="hideNote" class="alert alert-info">
+        <button (click)="hideNotification()"  type="button" aria-hidden="true" class="close">×</button>
+        <span>Hello, {{currentParent.firstName}} {{currentParent.lastName}} you have, {{children.length}} children and
+            {{helpers.length}} Helpers
+        </span>
+       
+        <!-- <li *ngFor="let user of userObservable | async as users; index as i; first as isFirst">
+             {{i}}/{{users.length}}. {{user}}
+            <span *ngIf="isFirst">default</span>
+             </li> -->
+    </div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title">Necessary Details</h4>
+                <p class="category">For the parent</p>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="label label-danger">Delegtes</h5>
+                        <div class="card-content table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-warning">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Delegates Name</th>
+                                        
+                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let delegate of helpers">
+                                        <td>{{delegate._id}}</td>
+                                        <td>{{delegate.lastname}} {{delegate.middlename}} {{delegate.firstname}}</td>
+                                       
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="label label-danger">Children</h5>
+                        <div class="card-content table-responsive">
+                            <div class="card-content table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Childs Name</th>
+                                            
+                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let child of children">
+                                            <td>{{child._id}}</td>
+                                            <td>{{child.lastname}} {{child.middlename}} {{child.firstname}}</td>
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title">Collection Process Details</h4>
+                <p class="category">Track your collection Process</p>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
